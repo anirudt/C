@@ -30,9 +30,8 @@ while(fgets(line,200,ftp)!=NULL)
             {
             	ch_id[c1] = line[21];
                 
-                //printf("%c\n",ch_id[c1]);
-                
-                
+                               
+                // Initially, the 'A' and 'B' didn't have single quotes!
             	if (ch_id[c1]=='A' || ch_id[c1]=='B')
             	{
             		for(i=0;i<5;i++) slno[i] = line[i+6];
@@ -62,8 +61,7 @@ while(fgets(line,200,ftp)!=NULL)
                 for(i=0;i<8;i++) z[i] = line[i+46];
                 z[8] = '\0';
                 store_z[c1] = atof(z);
-                //printf("%f %f %f\n",store_x[c1],store_y[c1],store_z[c1]);
-                //printf("%s\n",store_res_nm[c1]);
+                
                 c1++;
             	}
                
@@ -73,7 +71,7 @@ while(fgets(line,200,ftp)!=NULL)
 tot_hx = tot_hy = tot_hz = 0.0;
 for(i=0;i<c1;i++)
 { 
-    //printf("%s\n",store_res_nm[i]);
+    //Remember to use the strcmp() function, and not directly check for string equality/inequality.
 if(strcmp(store_res_nm[i],"ALA")==0 || strcmp(store_res_nm[i],"ILE")==0 || strcmp(store_res_nm[i],"LEU")==0 || strcmp(store_res_nm[i],"PHE")==0 || strcmp(store_res_nm[i],"VAL")==0 || strcmp(store_res_nm[i],"PRO")==0 ||strcmp(store_res_nm[i],"GLY")==0)
 {
 	strcpy(store_hres_nm[i], store_res_nm[i]);
@@ -88,7 +86,7 @@ if(strcmp(store_res_nm[i],"ALA")==0 || strcmp(store_res_nm[i],"ILE")==0 || strcm
 }	
     printf("%f\n",tot_hx);
 
-	hcm_x = tot_hx*1.0/c1;
+	hcm_x = tot_hx/c1;
     hcm_y = tot_hy/c1;
     hcm_z = tot_hz/c1;
     printf("hx=%f hy= %f hz= %f", hcm_x, hcm_y, hcm_z);
