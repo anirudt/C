@@ -9,7 +9,7 @@ int main()
 {
 
 FILE *ftp, *ftp2;
-int i, c1, store_atm_no[10000], store_res_no[10000];
+int i, c1, store_atm_no[10000], store_res_no[10000],c2;
 char line[200], word[5], slno[6], atm_nm[4], store_atm_nm[10000][4], res_nm[4], store_res_nm[10000][4], res_no[5], ch_id[10000], x[9], y[9], z[9] ;
 float store_x[10000], store_y[10000], store_z[10000], tot_x, tot_y, tot_z, cm_x, cm_y, cm_z;
 float store_hx[10000], store_hy[10000], store_hz[10000], tot_hx, tot_hy, tot_hz, hcm_x, hcm_y, hcm_z;
@@ -20,6 +20,7 @@ char store_hres_nm[10000][4];
 ftp = fopen( "1ASY.pdb" , "r" ); 
 ftp2 = fopen("result.pdb" , "w");
 c1 = 0;
+c2 = 0;
 
 while(fgets(line,200,ftp)!=NULL)
     {
@@ -81,14 +82,14 @@ if(strcmp(store_res_nm[i],"ALA")==0 || strcmp(store_res_nm[i],"ILE")==0 || strcm
     tot_hx = tot_hx + store_hx[i];
     tot_hy = tot_hy + store_hy[i];
     tot_hz = tot_hz + store_hz[i];
-	        
+	c2++;
             }
 }	
     printf("%f\n",tot_hx);
 
-	hcm_x = tot_hx/c1;
-    hcm_y = tot_hy/c1;
-    hcm_z = tot_hz/c1;
+	hcm_x = tot_hx/c2;
+    hcm_y = tot_hy/c2;
+    hcm_z = tot_hz/c2;
     printf("hx=%f hy= %f hz= %f", hcm_x, hcm_y, hcm_z);
 
 
