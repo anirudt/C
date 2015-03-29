@@ -82,6 +82,7 @@ if(strcmp(store_res_nm[i],"ALA")==0 || strcmp(store_res_nm[i],"ILE")==0 || strcm
     tot_hx = tot_hx + store_hx[i];
     tot_hy = tot_hy + store_hy[i];
     tot_hz = tot_hz + store_hz[i];
+    //Note that you will have a new number of such units 
 	c2++;
             }
 }	
